@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CodeProject\Http\Controllers;
 
+use CodeProject\Client;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use CodeProject\Http\Requests;
+use CodeProject\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
@@ -16,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return \CodeProject\Client::all();
     }
 
     /**
@@ -37,7 +38,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \CodeProject\Client::create($request->all());
     }
 
     /**
@@ -48,7 +49,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return \CodeProject\Client::find($id);
     }
 
     /**
@@ -82,6 +83,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \CodeProject\Client::find($id)->delete();
     }
 }

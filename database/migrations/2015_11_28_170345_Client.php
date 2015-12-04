@@ -12,7 +12,16 @@ class Client extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('clients', function(Blueprint $table){
+           $table->increments('id');
+           $table->string('name');
+           $table->string('responsible');
+           $table->string('email');
+           $table->string('phone');
+           $table->string('address');
+           $table->text('obs');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +31,6 @@ class Client extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('clients');
     }
 }
