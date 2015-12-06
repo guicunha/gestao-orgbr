@@ -26,7 +26,7 @@ class ClientService
      */
     protected $validator;
 
-    public function __consstruct(ClientRepository $repository, ClientValidator $validator)
+    public function __construct(ClientRepository $repository, ClientValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
