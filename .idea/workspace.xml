@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f869384d-70a8-405e-a795-066cca53a9f7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Entities/Client.php" afterPath="$PROJECT_DIR$/app/Entities/Client.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Entities/Project.php" afterPath="$PROJECT_DIR$/app/Entities/Project.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" />
     </list>
     <ignored path="projeto-angular.iws" />
@@ -59,8 +57,8 @@
       <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30794165">
-              <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.21880065">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#48#95#0#PHP" expanded="true" />
               </folding>
@@ -863,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30794165">
-          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.21880065">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#48#95#0#PHP" expanded="true" />
           </folding>
