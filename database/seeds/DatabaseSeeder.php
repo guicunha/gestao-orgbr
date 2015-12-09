@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(ClientTableSeeder::class);
+        $this->call(ProjectTableSeed::class);
+
+        \CodeProject\Entities\User::truncate();
+        factory(\CodeProject\Entities\User::class, 5)->create();
 
         Model::reguard();
     }
