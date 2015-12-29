@@ -14,13 +14,15 @@ class Project extends Migration
     {
         Schema::create('projects', function(Blueprint $table){
             $table->increments('id');
-            $table->string('owner_id');
-            $table->string('client_id');
+            $table->integer('owner_id')->unsigned();
+            $table->foreign('owner_id')->references('id')->on('users');
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->string('name');
             $table->text('description');
-            $table->integer('progress');
-            $table->string('status');
-            $table->dateTime('due_date');
+            $table->smallInteger('progress')->unsigned();
+            $table->smallInteger('status')->unsigned();
+            $table->date('due_date');
             $table->timestamps();
         });
     }

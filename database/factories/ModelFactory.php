@@ -35,10 +35,18 @@ $factory->define(CodeProject\Entities\Project::class, function (Faker\Generator 
     return [
         'owner_id' => $faker->numberBetween(1,3),
         'client_id' => $faker->numberBetween(1,3),
-        'name' => $faker->name,
+        'name' => $faker->word,
         'description' => $faker->sentence,
         'progress' => $faker->numberBetween(0,100),
-        'status' => $faker->address,
-        'due_date' => $faker->dateTime,
+        'status' => $faker->numberBetween(1,3),
+        'due_date' => $faker->dateTime('now'),
+    ];
+});
+
+$factory->define(CodeProject\Entities\ProjectNote::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => $faker->numberBetween(1,10),
+        'title' => $faker->word,
+        'note' => $faker->paragraph,
     ];
 });

@@ -31,6 +31,6 @@ class Client extends Migration
      */
     public function down()
     {
-        Schema::drop('clients');
+            Schema::drop('clients');
     }
 }

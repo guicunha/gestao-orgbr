@@ -2,14 +2,13 @@
 
 namespace CodeProject\Http\Controllers;
 
-use CodeProject\Repositories\ProjectRepository;
-use CodeProject\Services\ProjectService;
+use CodeProject\Repositories\ProjectNoteRepository;
+use CodeProject\Services\ProjectNoteService;
 use Illuminate\Http\Request;
 
 use CodeProject\Http\Requests;
-use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
-class ProjectController extends Controller
+class ProjectNoteController extends Controller
 {
 
     /**
@@ -24,7 +23,7 @@ class ProjectController extends Controller
      * @param  ProjectRepository $repository
      * @param ProjectService $service
      */
-    public function __construct(ProjectRepository $repository, ProjectService $service)
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
@@ -35,9 +34,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return $this->repository->findWhere(['owner_id' => \Authorizer::getResourceOwnerId()]);
+        return $this->repository->findWhere(['project_id' => $id]);
     }
 
     /**
@@ -57,12 +56,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $noteId)
     {
-        if($this->checkProjectOwner($id))
-         return $this->repository->with('client')->with('user')->find($id);
-        else
-         return ['error' => 'Access Forbidden'];
+        return $this->repository->findWhere(['project_id' => $id, 'id' => $noteId]);
     }
 
     /**
@@ -72,12 +68,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $noteId)
     {
-        if($this->checkProjectOwner($id))
-            $this->repository->find($id)->update($request->all());
-        else
-            return ['error' => 'Access Forbidden'];
+        $this->repository->update($request->all(), $noteId);
     }
 
     /**
@@ -86,23 +79,8 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $noteId)
     {
-        $this->repository->find($id)->delete();
-    }
-
-    private function checkProjectOwner($projectId)
-    {
-
-        $userId = \Authorizer::getResourceOwnerId();
-
-        if($this->repository->isOwner($projectId , $userId) == false)
-        {
-            return false;
-        }
-
-        return true;
-
-
+        $this->repository->delete($noteId);
     }
 }
