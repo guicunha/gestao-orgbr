@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
         //\CodeProject\Entities\ProjectNote::truncate();
         //\CodeProject\Entities\User::truncate();
 
-        factory(\CodeProject\Entities\User::class, 10)->create();
+        $this->call(UserTableSeeder::class);
         $this->call(ClientTableSeeder::class);
         $this->call(ProjectTableSeed::class);
         $this->call(ProjectNoteTableSeeder::class);
+        $this->call(OAuthClientsTableSeeder::class);
 
 
 

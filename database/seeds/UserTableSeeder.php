@@ -6,6 +6,10 @@
  * Date: 24/12/15
  * Time: 17:23
  */
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 class UserTableSeeder extends Seeder
 {
     /**
