@@ -7,11 +7,12 @@ use CodeProject\Services\ProjectService;
 use Illuminate\Http\Request;
 
 use CodeProject\Http\Requests;
-use LucaDegasperi\OAuth2Server\Facades\Authorizer;
+use CodeProject\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
-class ProjectController extends Controller
+class ProjectFileController extends Controller
 {
-
     /**
      * @var ProjectRepository
      */
@@ -37,7 +38,17 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->all();
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -48,7 +59,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->create($request->all());
+        $file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+
+        $data['file'] = $file;
+        $data['extension'] = $extension;
+        $data['name'] = $request->name;
+        $data['project_id'] = $request->project_id;
+        $data['description'] = $request->description;
+
+        $this->service->createFile($data);
+
+
+
     }
 
     /**
@@ -59,10 +82,18 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        if($this->checkProjectPermissions($id))
-            return $this->repository->find($id);
-        else
-         return ['error' => 'Access Forbidden'];
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -74,10 +105,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($this->checkProjectOwner($id))
-            $this->repository->find($id)->update($request->all());
-        else
-            return ['error' => 'Access Forbidden'];
+        //
     }
 
     /**
@@ -88,45 +116,6 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        if($this->checkProjectOwner($id))
-            $this->repository->find($id)->delete();
-        else
-            return ['error' => 'Access Forbidden'];
-    }
-
-    private function checkProjectOwner($projectId)
-    {
-
-        $userId = \Authorizer::getResourceOwnerId();
-
-        if($this->repository->isOwner($projectId , $userId) == false)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private function checkProjectMember($projectId)
-    {
-
-        $userId = \Authorizer::getResourceOwnerId();
-
-        if($this->repository->hasMember($projectId , $userId) == false)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private function checkProjectPermissions($projectId)
-    {
-
-        if($this->checkProjectOwner($projectId) or $this->checkProjectMember($projectId))
-            return true;
-        else
-            return false;
-
+        //
     }
 }

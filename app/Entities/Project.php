@@ -2,6 +2,7 @@
 
 namespace CodeProject\Entities;
 
+use CodeProject\Entities\ProjectFile;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -36,6 +37,11 @@ class Project extends Model
     public function members()
     {
         return $this->belongsToMany(User::class, 'project_members', 'project_id', 'member_id');
+    }
+
+    public function files()
+    {
+        $this->hasMany(ProjectFile::class);
     }
 
 }

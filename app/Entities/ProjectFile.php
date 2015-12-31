@@ -2,17 +2,24 @@
 
 namespace CodeProject\Entities;
 
+use CodeProject\Entities\Project;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class ProjectMember extends Model implements Transformable
+class ProjectFile extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
-        'project_id',
-        'member_id'
+        'name',
+        'description',
+        'extension'
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 
 }

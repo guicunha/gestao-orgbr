@@ -27,6 +27,8 @@ Route::group(['middleware' => 'oauth'],function(){
 
     Route::group(['prefix' => 'project'], function(){
 
+        Route::post('{id}/file', 'ProjectFileController@store');
+
 
         Route::get('{id}/note', 'ProjectNoteController@index');
         Route::post('{id}/note', 'ProjectNoteController@store');
