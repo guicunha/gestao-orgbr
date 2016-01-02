@@ -9,6 +9,7 @@
 namespace CodeProject\Services;
 
 
+use CodeProject\Entities\ProjectFile;
 use CodeProject\Repositories\ProjectRepository;
 use CodeProject\Validators\ProjectValidator;
 
@@ -79,12 +80,10 @@ class ProjectService
     {
         //name, description, extension, file
         $project = $this->repository->skipPresenter()->find($data['project_id']);
-
-        $projectFile = $project->files()->create($data);
-
-        $this->storage->put($projectFile->id . "." .
+        //$project->files->save($data);
+        $projectFile = $project->files()->save($data);
+        //ProjectFile::create($data);
+        $this->storage->put('1' . "." .
             $data['extension'], $this->filesystem->get($data['file']));
-
-
     }
 }

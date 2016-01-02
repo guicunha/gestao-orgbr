@@ -2,7 +2,6 @@
 
 namespace CodeProject\Entities;
 
-use CodeProject\Entities\ProjectFile;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model

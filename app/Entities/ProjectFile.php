@@ -2,7 +2,6 @@
 
 namespace CodeProject\Entities;
 
-use CodeProject\Entities\Project;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -14,7 +13,8 @@ class ProjectFile extends Model implements Transformable
     protected $fillable = [
         'name',
         'description',
-        'extension'
+        'extension',
+        'project_id'
     ];
 
     public function project()

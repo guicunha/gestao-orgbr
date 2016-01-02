@@ -7,9 +7,6 @@ use CodeProject\Services\ProjectService;
 use Illuminate\Http\Request;
 
 use CodeProject\Http\Requests;
-use CodeProject\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class ProjectFileController extends Controller
 {
@@ -69,8 +66,6 @@ class ProjectFileController extends Controller
         $data['description'] = $request->description;
 
         $this->service->createFile($data);
-
-
 
     }
 
