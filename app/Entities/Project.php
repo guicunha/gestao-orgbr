@@ -40,7 +40,7 @@ class Project extends Model
 
     public function files()
     {
-        $this->hasMany(ProjectFile::class);
+        return $this->hasMany(ProjectFile::class);
     }
 
 }

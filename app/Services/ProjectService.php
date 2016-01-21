@@ -80,10 +80,9 @@ class ProjectService
     {
         //name, description, extension, file
         $project = $this->repository->skipPresenter()->find($data['project_id']);
-        //$project->files->save($data);
-        $projectFile = $project->files()->save($data);
-        //ProjectFile::create($data);
-        $this->storage->put('1' . "." .
+        $projectFile = $project->files()->create($data);
+
+        $this->storage->put($projectFile->id.".".$data['extension'] .
             $data['extension'], $this->filesystem->get($data['file']));
     }
 }
