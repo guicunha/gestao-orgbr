@@ -69,16 +69,16 @@
 	</div>
 
 	@if(Config::get('app.debug'))
-		<script src="{{assert('build/js/vendor/jquery.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/angular.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/angular-route.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/angular-resource.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/angular-animate.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/angular-messages.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/ui-bootstrap.min.js')}}"></script>
-		<script src="{{assert('build/js/vendor/navbar.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/jquery.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/angular.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/angular-route.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/angular-resource.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/angular-animate.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/angular-messages.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/ui-bootstrap.min.js')}}"></script>
+		<script src="{{asset('build/js/vendor/navbar.min.js')}}"></script>
 
-		<script src="{{assert('build/js/app.js')}}"></script>
+		<script src="{{asset('build/js/app.js')}}"></script>
 	@else
 		<script src="{{elixir('js/all.js')}}"></script>
 	@endif
