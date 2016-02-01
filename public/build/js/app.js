@@ -13,7 +13,7 @@ app.config(function ($routeProvider) {
            controller: 'LoginController'
        })
        .when('/home',{
-           teamplateUrl: 'build/views/home.html',
+           templateUrl: 'build/views/home.html',
            controller: 'HomeController'
        })
 });
